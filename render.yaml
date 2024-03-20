@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: starthack2024
+    runtime: node
+    buildCommand: pnpm install --filter web && pnpm run build --filter web
+    startCommand: pnpm run start --filter web
+databases:
+  - name: starthack2024
+    region: frankfurt
+    plan: standard
+    databaseName: postgres
+    user: postgres
+    postgresMajorVersion: 15
