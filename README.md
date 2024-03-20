@@ -1,12 +1,64 @@
 # START HACK 2024 SUBMISSION
 
-## TODO
+## Requirements
 
-- [ ] OpenAI integration
-- [ ] Elevenlabs integration
-- [x] Deployment
-- [x] Github repository
-- [ ] Remotion integrationack
-- [ ] Plausible integration
-- [x] Database seed script
-- [ ] Setup instructions
+- [ ] Partner database
+- [ ] Startup database + detail page
+
+### Startup requirements
+
+- [ ] Check out page (audio input?)
+- [ ] Request forms
+- [ ] Public page (+who saw my page?)
+- [ ] Application process
+
+### Administration requirements
+
+- [ ] Application management
+- [ ] User/Startup management
+- [ ] Partner management
+- [ ] Checkout summarization
+- [ ] Analytics
+
+### Users
+
+- [ ] START Global Team Members
+- [ ] START Fellows (+Alumni)
+- [ ] Partners/Mentors/Investors
+
+## TODO:
+
+## Pages
+
+### Admins
+
+- [ ] Admin login page
+- [ ] Overview over all startups
+- [ ] Overview over all applications
+- [ ] Detailed information about a startup
+- [ ] Overview over all partners
+- [ ] Overview over all requests
+- [ ] Weekly checkout summaries (?)
+- [ ] Analytics (?)
+- [ ] Interview management (?)
+
+### Partner
+
+- [ ] Public partner list page
+
+### Mentor
+
+- [ ] Public mentor list page
+- [ ] Public mentor detail page
+
+### Founders
+
+- [ ] Founder Login page
+- [ ] Public startup page
+- [ ] Application form
+- [ ] Request form
+- [ ] Checkout form
+
+### Investors
+
+- [ ] Public list of startups

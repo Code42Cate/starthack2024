@@ -7,11 +7,166 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  status    String   @default("active")
+enum Category {
+  Corporate
+  Other
+  Startup
+  Foundation
+  University
+  StudentClub
+  VC
+  AngelNetwork
+  Institution
+  Accelerator
+  ScaleUp
+  InnovationHub
+}
+
+model Partner {
+  id         Int        @id @default(autoincrement())
+  categories Category[]
+
+  name    String
+  country String
+  email   String @unique
+}
+
+enum BusinessModel {
+  B2B
+  B2C
+  B2G
+  B2H
+  D2C
+}
+
+enum FundingStatus {
+  PreSeed
+  Seed
+  SeriesA
+  SeriesB
+  SeriesC
+  SeriesD
+  SeriesE
+  SeriesF
+  SeriesG
+}
+
+enum FellowStatus {
+  Fellow
+  Rejected
+  Alumni
+  Pending
+}
+
+enum CompanyStatus {
+  Acquired
+  Failed
+  Active
+}
+
+model Startup {
+  id Int @id @default(autoincrement())
+
+  industry      String
+  name          String
+  description   String
+  fellowStatus  FellowStatus
+  fundingStatus FundingStatus
+  companyStatus String
+  logoUrl       String
+  foundingDate  DateTime
+  country       String
+  website       String
+  twitter       String
+  linkedin      String
+
+  businessModel BusinessModel
+
+  founders Founder[]
+}
+
+enum Gender {
+  Female
+  Male
+  PreferNotToSay
+  Other
+}
+
+enum UniversityDegree {
+  Bachelor
+  Master
+  PhD
+}
+
+model Founder {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+
+  firstName           String
+  lastName            String
+  gender              Gender
+  dateOfBirth         DateTime
+  phoneNumber         String
+  city                String
+  country             String
+  hasEuropeanPassport Boolean
+  linkedin            String
+  universityName      String
+  universityMajor     String
+  universityDegree    UniversityDegree
+  avatarUrl           String
+  universityStartDate DateTime
+  universityEndDate   DateTime
+
+  startupId Int
+  startup   Startup    @relation(fields: [startupId], references: [id])
+  checkout  Checkout[]
+  request   Request[]
+}
+
+model Request {
+  id Int @id @default(autoincrement())
+
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
+  title   String
+  content String
+  summary String
+
+  founderId Int
+  founder   Founder @relation(fields: [founderId], references: [id])
+}
+
+model Checkout {
+  Id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  title   String
+  content String
+  summary String
+
+  founderId Int
+  founder   Founder @relation(fields: [founderId], references: [id])
+}
+
+model Mentor {
+  Id    Int    @id @default(autoincrement())
+  email String @unique
+
+  firstName   String
+  lastName    String
+  description String
+
+  avatarUrl String
+}
+
+model Admin {
+  Id    Int    @id @default(autoincrement())
+  email String @unique
+
+  firstName String
+  lastName  String
+
+  avatarUrl String
 }
