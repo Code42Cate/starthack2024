@@ -5,9 +5,8 @@ services:
     buildCommand: pnpm install --filter web && pnpm run build --filter web
     startCommand: pnpm run start --filter web
 databases:
-  - name: starthack2024
+  - name: hackasaurusrex
     region: frankfurt
     plan: standard
-    databaseName: postgres
-    user: postgres
+    databaseName: starthack
     postgresMajorVersion: 15
