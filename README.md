@@ -4,7 +4,7 @@
 
 - [ ] OpenAI integration
 - [ ] Elevenlabs integration
-- [ ] Deployment
+- [x] Deployment
 - [x] Github repository
 - [ ] Remotion integrationack
 - [ ] Plausible integration
