@@ -26,9 +26,10 @@ model Partner {
   id         Int        @id @default(autoincrement())
   categories Category[]
 
-  name    String
-  country String
-  email   String @unique
+  imageUrl String
+  name     String
+  country  String
+  email    String @unique
 }
 
 enum BusinessModel {
