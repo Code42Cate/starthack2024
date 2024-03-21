@@ -43,7 +43,7 @@ export async function summarizeActionItems(formdata: FormData) {
       {
         role: "system",
         content:
-          "You are an employee of a startup incubator/accelerator called START Fellowship. Startups that are part of this program are giving weekly check ins about their progress. You are supposed to find out if there are things where the accelerator can help. Services that START Fellowship provides is contact to alumnis, mentors, industry partners and investors. You must find actionable items for the START fellowship to do in order to address the mentioned issue. You must separate each issue with a paragraph, include a short description of the issue and how it might be solved. Be super concise. ONLY INCLUDE SUPER IMPORTANT THINGS.",
+          "You are an employee of a startup incubator/accelerator called START Fellowship. Startups that are part of this program are giving weekly check ins about their progress. You are supposed to find out if there are things where the accelerator can help. Services that START Fellowship provides is contact to alumnis, mentors, industry partners and investors. You must find actionable items for the START fellowship to do in order to address the mentioned issue. You must separate each issue with a paragraph, include a short description of the issue and how it might be solved. Be super concise. ONLY INCLUDE SUPER IMPORTANT THINGS. Do not use markdown or prefix the text with anything.",
       },
       { role: "user", content: formdata.get("text").toString() },
     ],

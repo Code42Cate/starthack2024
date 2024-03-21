@@ -5,7 +5,7 @@ import { Input } from "@ui/components/ui/input";
 import { Label } from "@ui/components/ui/label";
 import { Textarea } from "@ui/components/ui/textarea";
 import { Loader2 } from "lucide-react";
-import { startTransition, useEffect, useState, useTransition } from "react";
+import { useEffect, useTransition } from "react";
 
 export default function CheckoutPager() {
   let [isPending, startTransition] = useTransition();
