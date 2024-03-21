@@ -11,7 +11,6 @@ import Image from "next/image";
 import { FormPersonalInfo } from "./personalinfo-form";
 import { FormStartupInfo } from "./startupinfo-form";
 import { FormEmail } from "./email-form";
-import { PrismaClient } from "database";
 
 const emailFormSchema = z.object({
   email: z.string().email({

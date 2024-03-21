@@ -16,6 +16,46 @@ import { useRouter } from "next/navigation";
 import { EditTeammateDialog } from "./edit-teammate";
 import { useState } from "react";
 
+const Cell = ({ row }) => {
+  const teammate = row.original;
+
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <EditTeammateDialog teammate={teammate} open={open} setOpen={setOpen} />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem
+            onClick={() =>
+              navigator.clipboard.writeText(teammate.email.toString())
+            }
+          >
+            Copy Email
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setOpen(true)}>
+            Edit
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={async () => {
+              deleteTeammate(row.original.Id);
+              router.refresh();
+            }}
+          >
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
+  );
+};
 export const columns: ColumnDef<Admin>[] = [
   {
     id: "name",
@@ -67,49 +107,6 @@ export const columns: ColumnDef<Admin>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
-      const teammate = row.original;
-
-      const router = useRouter();
-      const [open, setOpen] = useState(false);
-
-      return (
-        <>
-          <EditTeammateDialog
-            teammate={teammate}
-            open={open}
-            setOpen={setOpen}
-          />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem
-                onClick={() =>
-                  navigator.clipboard.writeText(teammate.email.toString())
-                }
-              >
-                Copy Email
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setOpen(true)}>
-                Edit
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={async () => {
-                  deleteTeammate(row.original.Id);
-                  router.refresh();
-                }}
-              >
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </>
-      );
-    },
+    cell: Cell,
   },
 ];
