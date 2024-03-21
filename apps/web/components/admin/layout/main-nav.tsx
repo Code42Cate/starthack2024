@@ -14,7 +14,7 @@ const links = [
   },
   {
     href: "/admin/partners",
-    label: "Partners",
+    label: "Partners & Mentors",
   },
   {
     href: "/admin/applications",
@@ -23,10 +23,6 @@ const links = [
   {
     href: "/admin/requests",
     label: "Requests",
-  },
-  {
-    href: "/admin/mentors",
-    label: "Mentors",
   },
   {
     href: "/admin/team",

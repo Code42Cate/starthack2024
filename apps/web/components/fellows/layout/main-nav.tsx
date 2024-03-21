@@ -14,7 +14,7 @@ const links = [
   },
   {
     href: "/fellows/partners",
-    label: "Partners",
+    label: "Partners & Mentors",
   },
   {
     href: "/fellows/myapplication",
@@ -23,10 +23,6 @@ const links = [
   {
     href: "/fellows/requests",
     label: "Requests",
-  },
-  {
-    href: "/fellows/mentors",
-    label: "Mentors",
   },
 ];
 
