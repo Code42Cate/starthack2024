@@ -6,7 +6,7 @@ export default function FellowsMainPage() {
     <div className="mt-4 flex w-fit flex-col gap-4">
       <h1 className="text-xl font-bold">Welcome, Vasilis!</h1>
       <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-1 flex h-52 w-96 cursor-pointer flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
+        <div className="col-span-1 flex h-52 w-96 flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
           <h2 className="text-lg font-bold text-[#FF6100]">Fellow Fellows</h2>
           <p>
             Connect with other founders and alumni through a comprehensive
@@ -22,7 +22,7 @@ export default function FellowsMainPage() {
           </Link>
         </div>
 
-        <div className="col-span-1 flex h-52 w-96 cursor-pointer flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
+        <div className="col-span-1 flex h-52 w-96 flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
           <h2 className="text-lg font-bold text-[#FF6100]">
             Partner &#38; Mentors
           </h2>
@@ -40,7 +40,7 @@ export default function FellowsMainPage() {
           </Link>
         </div>
 
-        <div className="col-span-1 flex h-52 w-96 cursor-pointer flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
+        <div className="col-span-1 flex h-52 w-96 flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
           <h2 className="text-lg font-bold text-[#FF6100]">Your startup</h2>
           <p>
             Manage your startup profile, update your progress and share your
@@ -58,7 +58,7 @@ export default function FellowsMainPage() {
           </Link>
         </div>
 
-        <div className="col-span-1 flex h-52 w-96 cursor-pointer flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
+        <div className="col-span-1 flex h-52 w-96 flex-col gap-2 rounded-lg border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:scale-[1.02]">
           <h2 className="text-lg font-bold text-[#FF6100]">Requests</h2>
           <p>View your requests that you have submitted to START</p>
 
