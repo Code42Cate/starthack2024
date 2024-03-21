@@ -33,7 +33,7 @@
 ### Admins
 
 - [x] Admin login page
-- [ ] Overview over all startups
+- [x] Overview over all startups
 - [ ] Overview over all applications
 - [ ] Detailed information about a startup
 - [x] Overview over all partners

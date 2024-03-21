@@ -1,11 +1,9 @@
 import { columns } from "@/components/admin/partners/columns";
 import { DataTable } from "@/components/admin/partners/data-table";
-import { PrismaClient } from "database";
-
-const client = new PrismaClient();
+import { prisma } from "database";
 
 async function getPartners() {
-  const partners = await client.partner.findMany({ orderBy: { id: "asc" } });
+  const partners = await prisma.partner.findMany({ orderBy: { id: "asc" } });
 
   return partners;
 }

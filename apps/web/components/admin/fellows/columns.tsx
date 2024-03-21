@@ -9,9 +9,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@ui/components/dropdown-menu";
-import { Admin, Startup } from "database";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
-import Image from "next/image";
+import { Startup } from "database";
+import {
+  ArrowUpDown,
+  Globe,
+  Linkedin,
+  MoreHorizontal,
+  Twitter,
+} from "lucide-react";
+import { fundingStageLabels } from "@/app/constants";
+import Link from "next/link";
 
 export const columns: ColumnDef<Startup>[] = [
   {
@@ -19,18 +26,9 @@ export const columns: ColumnDef<Startup>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex items-center">
-          <Image
-            src={row.original.avatarUrl}
-            alt={`${row.original.firstName}'s avatar`}
-            width={64}
-            height={64}
-            className="h-10 w-10 rounded-full object-cover shadow-sm"
-          />
           <div className="ml-2 flex flex-col gap-1">
-            <span>
-              {row.original.firstName} {row.original.lastName}
-            </span>
-            <span className="text-neutral-700">{row.original.email}</span>
+            <span className="font-bold">{row.original.name}</span>
+            <span className="text-neutral-700">{row.original.description}</span>
           </div>
         </div>
       );
@@ -49,18 +47,61 @@ export const columns: ColumnDef<Startup>[] = [
   },
   {
     id: "status",
-    cell: () => {
+    cell: ({ row }) => {
       return (
-        <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-          Active
+        <span
+          className={clsx(
+            "inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20",
+            {
+              "bg-yellow-100 text-yellow-700 ring-yellow-600/20":
+                row.original.companyStatus === "Acquired",
+              "bg-red-50 text-red-700 ring-red-600/20":
+                row.original.companyStatus === "Failed",
+            },
+          )}
+        >
+          {row.original.companyStatus}
         </span>
       );
     },
     header: "Status",
   },
   {
-    accessorKey: "position",
-    header: "Position",
+    id: "fundingStage",
+    cell: ({ row }) => {
+      return <span>{fundingStageLabels[row.original.fundingStatus]}</span>;
+    },
+    header: "Funding Stage",
+  },
+  {
+    id: "businessmodel",
+    cell: ({ row }) => {
+      return (
+        <span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20">
+          {row.original.businessModel}
+        </span>
+      );
+    },
+    header: "Business Model",
+  },
+  {
+    id: "socials",
+    header: "Socials",
+    cell: ({ row }) => {
+      return (
+        <div className="flex items-center gap-2">
+          <Link href={row.original.linkedin}>
+            <Linkedin className="h-4 w-4 text-neutral-500" />
+          </Link>
+          <Link href={row.original.twitter}>
+            <Twitter className="h-4 w-4 text-neutral-500" />
+          </Link>
+          <Link href={row.original.website}>
+            <Globe className="h-4 w-4 text-neutral-500" />
+          </Link>
+        </div>
+      );
+    },
   },
   {
     id: "actions",
@@ -78,7 +119,7 @@ export const columns: ColumnDef<Startup>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuItem
               onClick={() =>
-                navigator.clipboard.writeText(teammate.email.toString())
+                navigator.clipboard.writeText(teammate.linkedin.toString())
               }
             >
               Copy Email

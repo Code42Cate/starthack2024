@@ -1,11 +1,9 @@
 import { columns } from "@/components/admin/team/columns";
 import { DataTable } from "@/components/admin/team/data-table";
-import { PrismaClient } from "database";
-
-const client = new PrismaClient();
+import { prisma } from "database";
 
 async function getTeammates() {
-  const teammates = await client.admin.findMany({ orderBy: { Id: "asc" } });
+  const teammates = await prisma.admin.findMany({ orderBy: { Id: "asc" } });
 
   return teammates;
 }

@@ -28,6 +28,19 @@ export const partnerCategoryColors = {
   InnovationHub: "bg-amber-100 text-amber-800",
 };
 
+export const fundingStageLabels = {
+  SeriesA: "Series A",
+  SeriesB: "Series B",
+  SeriesC: "Series C",
+  SeriesD: "Series D",
+  SeriesE: "Series E",
+  SeriesF: "Series F",
+  SeriesG: "Series G",
+  SeriesH: "Series H",
+  Seed: "Seed",
+  PreSeed: "Pre-Seed",
+};
+
 export const countryFlags = {
   Brazil: "🇧🇷",
   Argentina: "🇦🇷",

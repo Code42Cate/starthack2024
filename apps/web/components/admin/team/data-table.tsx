@@ -60,10 +60,12 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center justify-between py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter positions..."
+          value={
+            (table.getColumn("position")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("position")?.setFilterValue(event.target.value)
           }
           className="w-min"
         />

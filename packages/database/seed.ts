@@ -2,8 +2,7 @@ import {
   Founder,
   UniversityDegree,
   Gender,
-  PrismaClient,
-  Prisma,
+  prisma,
   Startup,
   CompanyStatus,
   FellowStatus,
@@ -107,7 +106,7 @@ async function seedStartups() {
     //console.log(startup);
   }
 
-  await database.startup.createMany({
+  await prisma.startup.createMany({
     data: startupObjects,
   });
 }
@@ -142,7 +141,7 @@ async function seedFounders() {
     //console.log(founder);
   }
 
-  await database.founder.createMany({
+  await prisma.founder.createMany({
     data: founderObjects,
   });
 }
@@ -157,13 +156,16 @@ async function seedRequests() {
       createdAt: faker.date.anytime(),
       founderId:
         FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
+      founderId:
+        FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
       summary: faker.lorem.sentences(),
+    };
     };
     RequestObjects.push(request);
     //console.log(request);
   }
 
-  await database.request.createMany({
+  await prisma.request.createMany({
     data: RequestObjects,
   });
 }
@@ -178,13 +180,15 @@ async function seedCheckouts() {
       createdAt: faker.date.anytime(),
       founderId:
         FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
+      founderId:
+        FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
       summary: faker.lorem.sentences(),
     };
     RequestObjects.push(request);
     //console.log(request);
   }
 
-  await database.checkout.createMany({
+  await prisma.checkout.createMany({
     data: CheckoutObjects,
   });
 }
