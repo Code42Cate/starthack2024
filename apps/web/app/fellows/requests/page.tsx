@@ -8,7 +8,7 @@ async function getCheckouts() {
       founder: true,
     },
     where: {
-      founderId: 11,
+      founderId: 21,
     },
     orderBy: { createdAt: "desc" },
   });

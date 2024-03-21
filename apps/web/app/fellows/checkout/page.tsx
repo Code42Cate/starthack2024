@@ -30,7 +30,7 @@ export default function CheckoutPager() {
         <h1 className="text-xl font-bold">Weekly Checkout</h1>
         <div className="flex max-w-xl flex-col gap-4">
           <form className="space-y-2" action={onSubmit}>
-            <Input type="hidden" name="founderId" value="11" />
+            <Input type="hidden" name="founderId" value="21" />
 
             <Label>
               What did you accomplish this week? What are you struggling with?
