@@ -32,8 +32,14 @@ export default async function Page() {
               className="rounded-md object-contain"
             />
 
-            <div className="flex flex-col">
-              <h2 className="text-lg font-bold">{partner.name}</h2>
+            <div className="flex h-full flex-col justify-between">
+              <h2 className="text-lg font-bold">
+                {partner.name}
+
+                <span className="ml-2 text-xs font-extralight">
+                  {partner.country} {countryFlags[partner.country]}
+                </span>
+              </h2>
               <span>{partner.email}</span>
               <div>
                 {partner.categories.map((category: Category) => (
@@ -47,9 +53,6 @@ export default async function Page() {
                     {partnerCategoryLabels[category]}
                   </span>
                 ))}
-              </div>
-              <div>
-                {partner.country} {countryFlags[partner.country]}
               </div>
             </div>
           </div>
