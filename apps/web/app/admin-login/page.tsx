@@ -52,6 +52,7 @@ export default function AuthenticationPage() {
             className="z-20 mx-auto mt-24"
             autoPlay
             muted
+            loop
           />
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
