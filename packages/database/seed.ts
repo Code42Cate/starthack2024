@@ -154,11 +154,14 @@ async function seedRequests() {
 
 async function seedCheckouts() {
   for (let i = 0; i < numCheckouts; i++) {
+
+    const FounderArray = await database.founder.findMany();
+
     const request: RequestWithoutId = {
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraphs(),
       createdAt: faker.date.anytime(),
-      founderId: numCheckouts-i,
+      founderId: FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
       summary: faker.lorem.sentences(),
     };
     RequestObjects.push(request);
@@ -172,7 +175,7 @@ async function seedCheckouts() {
 
 seedStartups()
   .then(() => {
-    console.log(`Successfully seeded database with startuos 🌱`);
+    console.log(`Successfully seeded database with startups 🌱`);
   })
   .catch((error) => {
     console.error(error);
