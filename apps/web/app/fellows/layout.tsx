@@ -12,9 +12,7 @@ export default function Layout({ children }) {
           <UserNav />
         </div>
       </div>
-      <div className="flex flex-col rounded-lg border-neutral-500 bg-white p-4 shadow-md">
-        {children}
-      </div>
+      {children}
     </main>
   );
 }

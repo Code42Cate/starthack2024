@@ -9,16 +9,12 @@ const links = [
     label: "Overview",
   },
   {
-    href: "/fellows/fellows",
+    href: "/public/fellows",
     label: "Fellows",
   },
   {
-    href: "/fellows/partners",
+    href: "/public/partners",
     label: "Partners & Mentors",
-  },
-  {
-    href: "/fellows/myapplication",
-    label: "My Application",
   },
   {
     href: "/fellows/requests",
