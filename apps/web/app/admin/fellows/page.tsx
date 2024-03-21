@@ -5,7 +5,14 @@ import { PrismaClient } from "database";
 const client = new PrismaClient();
 
 async function getStartups() {
-  const startups = await client.startup.findMany({ orderBy: { id: "asc" } });
+  const startups = await client.startup.findMany({
+    orderBy: { id: "asc" },
+    where: {
+      fellowStatus: {
+        in: ["Fellow", "Alumni"],
+      },
+    },
+  });
 
   return startups;
 }
@@ -15,7 +22,7 @@ export default async function FellowsPage() {
 
   return (
     <div className="">
-      <h1 className="text-xl font-bold">Team</h1>
+      <h1 className="text-xl font-bold">Fellows + Alumni</h1>
       <DataTable columns={columns} data={data} />
     </div>
   );

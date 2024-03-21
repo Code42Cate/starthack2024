@@ -24,7 +24,6 @@ import { Button } from "@ui/components/ui/button";
 import { Input } from "@ui/components/ui/input";
 
 import { useState } from "react";
-import { AddTeammateDialog } from "./add-teammate";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -60,15 +59,13 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center justify-between py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter names..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="w-min"
         />
-
-        <AddTeammateDialog />
       </div>
       <div className="w-full rounded-md border">
         <Table>
