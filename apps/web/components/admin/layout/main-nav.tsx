@@ -49,8 +49,8 @@ export function MainNav({
         <Link
           key={link.href}
           href={link.href}
-          className={clsx("hover:text-primary text-sm transition-colors", {
-            "font-medium": pathname === link.href,
+          className={clsx("text-sm transition-colors hover:text-[#FF6100]", {
+            "font-bold text-[#FF6100]": pathname === link.href,
           })}
         >
           {link.label}

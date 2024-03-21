@@ -1,7 +1,10 @@
 import "@ui/styles/globals.css";
 
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+import localFont from "next/font/local";
+const avenir = localFont({
+  src: "../public/avenir-regular.woff2",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -9,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={avenir.className}>
       <body className="antialiased">
         <div className="backdrop" />
         {children}
