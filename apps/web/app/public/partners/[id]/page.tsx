@@ -1,9 +1,7 @@
-import { PrismaClient } from "database";
-
-const client = new PrismaClient();
+import { prisma } from "database";
 
 async function getPartner(id: number) {
-  const partner = await client.partner.findFirst({
+  const partner = await prisma.partner.findFirst({
     where: {
       id,
     },

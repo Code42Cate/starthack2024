@@ -2,8 +2,7 @@ import {
   Founder,
   UniversityDegree,
   Gender,
-  PrismaClient,
-  Prisma,
+  prisma,
   Startup,
   CompanyStatus,
   FellowStatus,
@@ -15,8 +14,6 @@ import {
 import { faker } from "@faker-js/faker";
 
 // https://fakerjs.dev/guide/usage.html
-
-const database = new PrismaClient();
 
 const uniArray = ["KIT", "TU Berlin", "St. Gallen", "ETH"];
 const majorArray = [
@@ -61,7 +58,6 @@ const founderObjects: FounderWithoutId[] = [];
 const RequestObjects: RequestWithoutId[] = [];
 const CheckoutObjects: CheckoutWithoutId[] = [];
 
-
 async function seedStartups() {
   for (let i = 0; i < numStartups; i++) {
     const startup: StartupWithoutId = {
@@ -93,7 +89,7 @@ async function seedStartups() {
     console.log(startup);
   }
 
-  await database.startup.createMany({
+  await prisma.startup.createMany({
     data: startupObjects,
   });
 }
@@ -125,50 +121,49 @@ async function seedFounders() {
     console.log(founder);
   }
 
-  await database.founder.createMany({
+  await prisma.founder.createMany({
     data: founderObjects,
   });
 }
 
-
 async function seedRequests() {
   for (let i = 0; i < numRequests; i++) {
-
-    const FounderArray = await database.founder.findMany();
-    
-    const request: RequestWithoutId = {
-      title: faker.lorem.sentence(),
-      content: faker.lorem.paragraphs(),
-      createdAt: faker.date.anytime(),
-      founderId: FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
-      summary: faker.lorem.sentences(),
-    }
-    RequestObjects.push(request);
-    console.log(request);
-  }
-
-  await database.request.createMany({
-    data: RequestObjects,
-  });
-}
-
-async function seedCheckouts() {
-  for (let i = 0; i < numCheckouts; i++) {
-
-    const FounderArray = await database.founder.findMany();
+    const FounderArray = await prisma.founder.findMany();
 
     const request: RequestWithoutId = {
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraphs(),
       createdAt: faker.date.anytime(),
-      founderId: FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
+      founderId:
+        FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
       summary: faker.lorem.sentences(),
     };
     RequestObjects.push(request);
     console.log(request);
   }
 
-  await database.checkout.createMany({
+  await prisma.request.createMany({
+    data: RequestObjects,
+  });
+}
+
+async function seedCheckouts() {
+  for (let i = 0; i < numCheckouts; i++) {
+    const FounderArray = await prisma.founder.findMany();
+
+    const request: RequestWithoutId = {
+      title: faker.lorem.sentence(),
+      content: faker.lorem.paragraphs(),
+      createdAt: faker.date.anytime(),
+      founderId:
+        FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
+      summary: faker.lorem.sentences(),
+    };
+    RequestObjects.push(request);
+    console.log(request);
+  }
+
+  await prisma.checkout.createMany({
     data: CheckoutObjects,
   });
 }
@@ -197,7 +192,7 @@ seedRequests()
     console.error(error);
   });
 
-  seedCheckouts()
+seedCheckouts()
   .then(() => {
     console.log(`Successfully seeded database with checkouts 🌱`);
   })

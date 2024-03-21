@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@ui/components/button";
-import { clsx } from "clsx";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +11,10 @@ import {
 import { Admin } from "database";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
+import { deleteTeammate } from "./actions";
+import { useRouter } from "next/navigation";
+import { EditTeammateDialog } from "./edit-teammate";
+import { useState } from "react";
 
 export const columns: ColumnDef<Admin>[] = [
   {
@@ -67,26 +70,45 @@ export const columns: ColumnDef<Admin>[] = [
     cell: ({ row }) => {
       const teammate = row.original;
 
+      const router = useRouter();
+      const [open, setOpen] = useState(false);
+
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(teammate.email.toString())
-              }
-            >
-              Copy Email
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => {}}>Edit</DropdownMenuItem>
-            <DropdownMenuItem onClick={async () => {}}>Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <>
+          <EditTeammateDialog
+            teammate={teammate}
+            open={open}
+            setOpen={setOpen}
+          />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem
+                onClick={() =>
+                  navigator.clipboard.writeText(teammate.email.toString())
+                }
+              >
+                Copy Email
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setOpen(true)}>
+                Edit
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={async () => {
+                  deleteTeammate(row.original.Id);
+                  router.refresh();
+                }}
+              >
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </>
       );
     },
   },

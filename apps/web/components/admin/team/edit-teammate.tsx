@@ -11,34 +11,41 @@ import {
 } from "@ui/components/dialog";
 import { Input } from "@ui/components/input";
 import { Label } from "@ui/components/label";
-import { addTeammate } from "./actions";
+import { updateTeammate } from "./actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Admin } from "database";
 
-export function AddTeammateDialog() {
+export function EditTeammateDialog({
+  teammate,
+  open,
+  setOpen,
+}: {
+  teammate: Admin;
+  open: boolean;
+  setOpen: (open: boolean) => void;
+}) {
   const router = useRouter();
 
-  const [open, setOpen] = useState(false);
+  const { firstName, lastName, Id, email, position } = teammate;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline">Add Teammate</Button>
-      </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Teammate</DialogTitle>
+          <DialogTitle>Edit Teammate</DialogTitle>
           <DialogDescription>
-            Add a new teammate to your database.
+            Edit a teammate in your database.
           </DialogDescription>
         </DialogHeader>
         <form
           action={async (formData) => {
-            await addTeammate(formData);
+            await updateTeammate(formData);
             router.refresh();
             setOpen(false);
           }}
         >
+          <Input hidden id="id" type="hidden" name="id" defaultValue={Id} />
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -48,7 +55,7 @@ export function AddTeammateDialog() {
                 id="firstname"
                 type="text"
                 name="firstname"
-                defaultValue="Pedro"
+                defaultValue={firstName}
                 className="col-span-3"
               />
             </div>
@@ -60,7 +67,7 @@ export function AddTeammateDialog() {
                 id="lastname"
                 type="text"
                 name="lastname"
-                defaultValue="Duarte"
+                defaultValue={lastName}
                 className="col-span-3"
               />
             </div>
@@ -72,7 +79,7 @@ export function AddTeammateDialog() {
                 id="email"
                 type="email"
                 name="email"
-                defaultValue="random@example.com"
+                defaultValue={email}
                 className="col-span-3"
               />
             </div>
@@ -84,13 +91,13 @@ export function AddTeammateDialog() {
                 id="position"
                 type="text"
                 name="position"
-                defaultValue="Chief Mate Officer"
+                defaultValue={position}
                 className="col-span-3"
               />
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save Teammate</Button>
+            <Button type="submit">Update Teammate</Button>
           </DialogFooter>
         </form>
       </DialogContent>

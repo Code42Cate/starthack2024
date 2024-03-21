@@ -3,14 +3,12 @@ import {
   partnerCategoryColors,
   partnerCategoryLabels,
 } from "@/app/constants";
-import { Category, PrismaClient } from "database";
+import { Category, prisma } from "database";
 import Image from "next/image";
 import clsx from "clsx";
 
-const client = new PrismaClient();
-
 async function getPartners() {
-  const partners = await client.partner.findMany({ orderBy: { id: "asc" } });
+  const partners = await prisma.partner.findMany({ orderBy: { id: "asc" } });
 
   return partners;
 }
