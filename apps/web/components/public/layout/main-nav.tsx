@@ -11,7 +11,7 @@ export function MainNav({
       {...props}
     >
       <Link
-        href="/admin/overview"
+        href="/admin"
         className="hover:text-primary text-sm font-medium transition-colors"
       >
         Overview
