@@ -62,6 +62,3 @@
 ### Investors
 
 - [ ] Public list of startups
-
-pnpm run dev db:push --filter database
-pnpm run dev --filter web
