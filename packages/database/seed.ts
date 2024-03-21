@@ -18,6 +18,21 @@ import { faker } from "@faker-js/faker";
 
 const database = new PrismaClient();
 
+async function deleteAllEntries() {
+  try {
+    // Delete all entries in each model
+
+    await database.request.deleteMany({});
+    await database.checkout.deleteMany({});
+    await database.founder.deleteMany({});
+    await database.startup.deleteMany({});
+
+    console.log("All entries deleted successfully. BYE BYE!");
+  } catch (error) {
+    console.error("Error deleting entries:", error);
+  }
+}
+
 const uniArray = ["KIT", "TU Berlin", "St. Gallen", "ETH"];
 const majorArray = [
   "Industrial Engineering",
@@ -61,11 +76,10 @@ const founderObjects: FounderWithoutId[] = [];
 const RequestObjects: RequestWithoutId[] = [];
 const CheckoutObjects: CheckoutWithoutId[] = [];
 
-
 async function seedStartups() {
   for (let i = 0; i < numStartups; i++) {
     const startup: StartupWithoutId = {
-      industry: faker.company.bs(),
+      industry: faker.company.buzzPhrase(),
       name: faker.company.name(),
       description: faker.company.buzzPhrase(),
       fellowStatus:
@@ -90,7 +104,7 @@ async function seedStartups() {
         ],
     };
     startupObjects.push(startup);
-    console.log(startup);
+    //console.log(startup);
   }
 
   await database.startup.createMany({
@@ -100,6 +114,8 @@ async function seedStartups() {
 
 async function seedFounders() {
   for (let i = 0; i < numFounders; i++) {
+    const StartupArray = await database.startup.findMany();
+
     const founder: FounderWithoutId = {
       city: faker.location.city(),
       email: faker.internet.email(),
@@ -119,10 +135,11 @@ async function seedFounders() {
       avatarUrl: faker.image.avatar(),
       universityStartDate: faker.date.anytime(),
       universityEndDate: faker.date.anytime(),
-      startupId: numStartups - i,
+      startupId:
+        StartupArray[Math.floor(Math.random() * StartupArray.length)].id,
     };
     founderObjects.push(founder);
-    console.log(founder);
+    //console.log(founder);
   }
 
   await database.founder.createMany({
@@ -130,21 +147,20 @@ async function seedFounders() {
   });
 }
 
-
 async function seedRequests() {
   for (let i = 0; i < numRequests; i++) {
-
     const FounderArray = await database.founder.findMany();
-    
+
     const request: RequestWithoutId = {
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraphs(),
       createdAt: faker.date.anytime(),
-      founderId: FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
+      founderId:
+        FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
       summary: faker.lorem.sentences(),
-    }
+    };
     RequestObjects.push(request);
-    console.log(request);
+    //console.log(request);
   }
 
   await database.request.createMany({
@@ -154,18 +170,18 @@ async function seedRequests() {
 
 async function seedCheckouts() {
   for (let i = 0; i < numCheckouts; i++) {
-
     const FounderArray = await database.founder.findMany();
 
     const request: RequestWithoutId = {
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraphs(),
       createdAt: faker.date.anytime(),
-      founderId: FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
+      founderId:
+        FounderArray[Math.floor(Math.random() * FounderArray.length)].id,
       summary: faker.lorem.sentences(),
     };
     RequestObjects.push(request);
-    console.log(request);
+    //console.log(request);
   }
 
   await database.checkout.createMany({
@@ -173,34 +189,17 @@ async function seedCheckouts() {
   });
 }
 
-seedStartups()
-  .then(() => {
-    console.log(`Successfully seeded database with startups 🌱`);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+deleteAllEntries();
 
-seedFounders()
-  .then(() => {
-    console.log(`Successfully seeded database with founders 🌱`);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+async function seed() {
+  await seedStartups();
+  console.log(`Successfully seeded database with startups 🌱`);
+  await seedFounders();
+  console.log(`Successfully seeded database with founders 🌱`);
+  await seedRequests();
+  console.log(`Successfully seeded database with requests 🌱`);
+  await seedCheckouts();
+  console.log(`Successfully seeded database with checkouts 🌱`);
+}
 
-seedRequests()
-  .then(() => {
-    console.log(`Successfully seeded database with requests 🌱`);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-  seedCheckouts()
-  .then(() => {
-    console.log(`Successfully seeded database with checkouts 🌱`);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+seed();
