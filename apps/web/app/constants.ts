@@ -59,3 +59,31 @@ export const countryFlags = {
   Argentina: "🇦🇷",
   Chile: "🇨🇱",
 };
+
+export const filter = {
+  special: {
+    isHiring: "Is Hiring",
+    sustainability: "Sustainability",
+  },
+  batch: {
+    "all-batches": "All Batches", // "All Batches
+    2024: "2024",
+    2023: "2023",
+    2022: "2022",
+    2021: "2021",
+  },
+  industry: {
+    "all-industries": "All Industries",
+    healthcare: "Healthcare",
+    spacetech: "Spacetech",
+    saas: "SaaS",
+    fintech: "Fintech",
+  },
+  businessModel: {
+    "all-business-models": "All Business Models",
+    b2b: "B2B",
+    b2c: "B2C",
+    b2g: "B2G",
+    b2h: "B2H",
+  },
+};
