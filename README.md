@@ -62,3 +62,5 @@
 ### Investors
 
 - [ ] Public list of startups
+
+ffmpeg -i audio.ogg -acodec libmp3lame audio.mp3

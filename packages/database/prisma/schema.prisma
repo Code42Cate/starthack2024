@@ -147,6 +147,8 @@ model Checkout {
   content String
   summary String
 
+  actionItems String[]
+
   founderId Int
   founder   Founder @relation(fields: [founderId], references: [id])
 }
