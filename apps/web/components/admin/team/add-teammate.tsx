@@ -11,12 +11,9 @@ import {
 import { Input } from "@ui/components/input";
 import { Label } from "@ui/components/label";
 import { useState } from "react";
+import { addTeammate } from "./actions";
 
 export function AddTeammateDialog() {
-  const [email, setEmail] = useState("");
-  const [position, setPosition] = useState("");
-  const [name, setName] = useState("");
-
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -29,52 +26,61 @@ export function AddTeammateDialog() {
             Add a new teammate to your database.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
+        <form action={addTeammate}>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                First name
+              </Label>
+              <Input
+                id="firstname"
+                type="text"
+                name="firstname"
+                defaultValue="Pedro"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Last name
+              </Label>
+              <Input
+                id="lastname"
+                type="text"
+                name="lastname"
+                defaultValue="Duarte"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="email" className="text-right">
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                name="email"
+                defaultValue="random@example.com"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="position" className="text-right">
+                Position
+              </Label>
+              <Input
+                id="position"
+                type="text"
+                name="position"
+                defaultValue="Chief Mate Officer"
+                className="col-span-3"
+              />
+            </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email" className="text-right">
-              Email
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              defaultValue="random@example.com"
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="position" className="text-right">
-              Position
-            </Label>
-            <Input
-              id="position"
-              type="text"
-              value={position}
-              onChange={(event) => setPosition(event.target.value)}
-              defaultValue="Chief Mate Officer"
-              className="col-span-3"
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit" onClick={async () => {}}>
-            Save Teammate
-          </Button>
-        </DialogFooter>
+          <DialogFooter>
+            <Button type="submit">Save Teammate</Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );
