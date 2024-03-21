@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Layout({ children }) {
   return (
-    <main className="flex w-full flex-col gap-4 p-4">
+    <main className="mx-auto flex w-full flex-col gap-4 p-4">
       <div className="flex h-16 items-center rounded-lg bg-white px-4 shadow-sm">
         <Image src="/logo.svg" alt="Logo" width={120} height={40} />
         <MainNav className="mx-6" />

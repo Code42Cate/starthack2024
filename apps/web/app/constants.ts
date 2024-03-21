@@ -41,6 +41,19 @@ export const fundingStageLabels = {
   PreSeed: "Pre-Seed",
 };
 
+export const fundingStageColors = {
+  SeriesA: "bg-blue-100 text-blue-800",
+  SeriesB: "bg-green-100 text-green-800",
+  SeriesC: "bg-yellow-100 text-yellow-800",
+  SeriesD: "bg-purple-100 text-purple-800",
+  SeriesE: "bg-indigo-100 text-indigo-800",
+  SeriesF: "bg-red-100 text-red-800",
+  SeriesG: "bg-pink-100 text-pink-800",
+  SeriesH: "bg-teal-100 text-teal-800",
+  Seed: "bg-cyan-100 text-cyan-800",
+  PreSeed: "bg-rose-100 text-rose-800",
+};
+
 export const countryFlags = {
   Brazil: "🇧🇷",
   Argentina: "🇦🇷",
