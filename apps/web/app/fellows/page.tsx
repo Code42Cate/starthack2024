@@ -32,7 +32,7 @@ export default function FellowsMainPage() {
           </p>
 
           <Link
-            href="/public/fellows"
+            href="/public/partners"
             className="group ml-auto mt-auto flex flex-row items-center gap-1 underline-offset-4 hover:text-[#FF6100] hover:underline"
           >
             Explore
@@ -48,7 +48,9 @@ export default function FellowsMainPage() {
           </p>
 
           <Link
-            href="/public/fellows"
+            href="/public/fellows/1"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group ml-auto mt-auto flex flex-row items-center gap-1 underline-offset-4 hover:text-[#FF6100] hover:underline"
           >
             Explore
