@@ -41,16 +41,16 @@ function ApplicationCard({ text, date, avatar }: Application) {
 
       <div className="flex flex-row items-center justify-end gap-4">
         <Image
-          src={avatar}
+          src={"/avatar.png"}
           width={24}
           height={24}
           alt="avatar"
-          className="rounded-full object-contain"
+          className="h-6 w-6 rounded-full object-cover"
         />
 
         <div className="flex flex-row items-center gap-1">
           <MailWarning className="h-5 w-5 text-gray-500" />
-          <span className="text-sm text-gray-500">2</span>
+          <span className="text-sm text-gray-500">{text.length % 8}</span>
         </div>
       </div>
     </div>
