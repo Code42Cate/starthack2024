@@ -26,7 +26,7 @@ export default async function Page({ searchParams }) {
         </div>
         <div className="flex flex-col items-start justify-between gap-4 rounded-lg border border-gray-200 bg-white">
           {fellows.map((fellow) => (
-            <Result fellow={fellow} />
+            <Result fellow={fellow} key={fellow.id} />
           ))}
         </div>
       </div>
