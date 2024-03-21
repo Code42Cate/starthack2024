@@ -9,7 +9,7 @@ import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
-export function Datepicker({ className }: { className?: string }) {
+export function Datepicker({ className, ...props }: { className?: string }) {
   const [date, setDate] = React.useState<Date>();
 
   return (
@@ -29,10 +29,12 @@ export function Datepicker({ className }: { className?: string }) {
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
+          id="dateofbirth"
           mode="single"
           selected={date}
           onSelect={setDate}
           initialFocus
+          {...props}
         />
       </PopoverContent>
     </Popover>

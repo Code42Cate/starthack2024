@@ -2,13 +2,10 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button, buttonVariants } from "@ui/components/ui/button";
-import { UserAuthForm } from "@/components/apply/user-auth-form";
+import { buttonVariants } from "@ui/components/ui/button";
 import { cn } from "@ui/lib/utils";
-import { Label } from "@ui/components/ui/label";
-import { Input } from "@ui/components/ui/input";
-import { Switch } from "@ui/components/ui/switch";
-import { Datepicker } from "@ui/components/ui/datepicker";
+
+import { ApplyForm } from "@/components/apply/apply-form";
 
 export const metadata: Metadata = {
   title: "Apply for START Fellowship",
@@ -16,7 +13,6 @@ export const metadata: Metadata = {
 };
 
 const partnerLogos = [
-  "/logos",
   "/logos/Advestra.png",
   "/logos/ewor.webp",
   "/logos/Geberit.webp",
@@ -81,7 +77,12 @@ export default function ApplyPage({
             </blockquote>
           </div>
           <div className="relative z-20 mt-auto flex flex-row items-center gap-2 overflow-hidden">
-            {partnerLogos.map((logo, index) => (
+            {[
+              ...partnerLogos,
+              ...partnerLogos,
+              ...partnerLogos,
+              ...partnerLogos,
+            ].map((logo, index) => (
               <Image
                 key={index}
                 src={logo}
@@ -95,100 +96,8 @@ export default function ApplyPage({
           </div>
         </div>
         <div className="lg:p-8">
-          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-            {(step === "0" || step === undefined) && (
-              <>
-                <div className="flex flex-col space-y-2 text-center">
-                  <h1 className="text-2xl font-semibold tracking-tight">
-                    Apply for START Fellowship
-                  </h1>
-                  <p className="text-muted-foreground text-sm">
-                    Enter your email below to get started.
-                  </p>
-                </div>
-                <UserAuthForm />
-                <p className="text-muted-foreground px-8 text-center text-sm">
-                  By clicking continue, you agree to our{" "}
-                  <Link
-                    href="/terms"
-                    className="hover:text-primary underline underline-offset-4"
-                  >
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="/privacy"
-                    className="hover:text-primary underline underline-offset-4"
-                  >
-                    Privacy Policy
-                  </Link>
-                  .
-                </p>
-              </>
-            )}
-
-            {step === "1" && (
-              <>
-                <div className="grid grid-cols-6 items-center gap-4">
-                  <Label htmlFor="name" className="col-span-2 text-right">
-                    First name
-                  </Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    defaultValue="Pedro"
-                    className="col-span-4"
-                  />
-                </div>
-
-                <div className="grid grid-cols-6 items-center gap-4">
-                  <Label htmlFor="name" className="col-span-2 text-right">
-                    Last name
-                  </Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    defaultValue="Duarte"
-                    className="col-span-4"
-                  />
-                </div>
-
-                <div className="grid grid-cols-6 items-center gap-4">
-                  <Label htmlFor="name" className="col-span-2 text-right">
-                    Phone number
-                  </Label>
-                  <Input
-                    id="name"
-                    type="tel"
-                    defaultValue="+49 1523 2031056"
-                    className="col-span-4"
-                  />
-                </div>
-
-                <div className="grid grid-cols-6 items-center gap-4">
-                  <Label htmlFor="name" className="col-span-2 text-right">
-                    Date of birth
-                  </Label>
-                  <Datepicker className="col-span-4" />
-                </div>
-
-                <div className="grid grid-cols-6 items-center gap-4">
-                  <Label htmlFor="name" className="col-span-2 text-right">
-                    EU passport
-                  </Label>
-                  <Switch className="col-span-4" />
-                </div>
-
-                <div>
-                  <Link
-                    href="/apply?step=2"
-                    className="ring-offset-background focus-visible:ring-ring bg-primary text-primary-foreground hover:bg-primary/90 float-right inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-                  >
-                    Continue
-                  </Link>
-                </div>
-              </>
-            )}
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
+            <ApplyForm />
           </div>
         </div>
       </div>
