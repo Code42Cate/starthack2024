@@ -32,11 +32,11 @@
 
 ### Admins
 
-- [ ] Admin login page
+- [x] Admin login page
 - [ ] Overview over all startups
 - [ ] Overview over all applications
 - [ ] Detailed information about a startup
-- [ ] Overview over all partners
+- [x] Overview over all partners
 - [ ] Overview over all requests
 - [ ] Weekly checkout summaries (?)
 - [ ] Analytics (?)

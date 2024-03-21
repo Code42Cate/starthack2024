@@ -3,6 +3,6 @@ module.exports = {
   reactStrictMode: true,
   transpilePackages: ["ui"],
   images: {
-    domains: ["startglobal1920.notion.site"],
+    domains: ["startglobal1920.notion.site", "media.istockphoto.com", "t3.ftcdn.net", "t4.ftcdn.net", "www.morganstanley.com", "www.shutterstock.com"],
   }
 };
