@@ -1,15 +1,14 @@
-import { PrismaClient } from "./index";
+import { Founder, PrismaClient } from "./index";
+import { faker } from "@faker-js/faker";
 
-const client = new PrismaClient();
+// https://fakerjs.dev/guide/usage.html
 
 async function seed() {
-  await client.user.create({
-    data: {
-      email: "ubvja@student.kit.edu",
-      name: "Jonas 'Marty' Scholz",
-      status: "active",
-    },
-  });
+  const founder: Founder = {
+    city: faker.location.city(),
+  };
+
+  console.log(founder);
 }
 
 seed()
