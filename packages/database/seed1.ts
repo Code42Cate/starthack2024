@@ -5,11 +5,13 @@ import {
   Gender,
   prisma,
   Startup,
-  CompanyStatus,
   FellowStatus,
   FundingStatus,
+  CompanyStatus,
+  Metric,
   BusinessModel,
   Request,
+  FundingRound,
   Checkout,
 } from "./index";
 import { faker } from "@faker-js/faker";
@@ -22,6 +24,7 @@ async function deleteAllEntries() {
   try {
     // Delete all entries in each model
 
+    await database.metric.deleteMany({});
     await database.request.deleteMany({});
     await database.checkout.deleteMany({});
     await database.founder.deleteMany({});
@@ -80,6 +83,10 @@ async function seedStartups() {
   for (let i = 0; i < numStartups; i++) {
     const startup: StartupWithoutId = {
       industry: faker.company.buzzPhrase(),
+      batch: "2023",
+      pitchdeckUrl:
+        "https://docs.google.com/spreadsheets/d/1tvsNZGF2nvwiWPqqJQE77h-1ADf98hCeLWJNj4_owVA/edit#gid=0",
+      totalFunding: 4000000,
       name: faker.company.name(),
       description: faker.company.buzzPhrase(),
       fellowStatus:
@@ -104,11 +111,44 @@ async function seedStartups() {
         ],
     };
     startupObjects.push(startup);
+
     //console.log(startup);
   }
 
   await prisma.startup.createMany({
     data: startupObjects,
+  });
+}
+
+async function seedMetrics() {
+  const StartupArray = await database.startup.findMany();
+
+  const metricsCount = 10;
+  const metrics: Omit<Metric, "id">[] = [];
+
+  for (let i = 0; i < StartupArray.length; i++) {
+    for (let j = 0; j < metricsCount; j++) {
+      // the first metric gets created metricsCount * 3 months ago
+      // the next metrics get created every 3 months until today
+      const date = new Date();
+      date.setMonth(date.getMonth() - j * 3);
+
+      metrics.push({
+        startupId: StartupArray[i].id,
+        createdAt: date,
+        revenue: j * 1000 * (1 - 0.4 * Math.random()),
+        monthlyActiveUsers: j * 1000 * (1 - 0.3 * Math.random()),
+        cash: j * 1000 * (1 - 0.1 * Math.random()),
+        runwayMonths: j * 10,
+        clientRetention: 0.8 + 0.1 * Math.random(),
+        northStarValue: j * 1000 * (1 - 0.3 * Math.random()),
+        northStarMetric: "Coffees drunk",
+      });
+    }
+  }
+
+  await prisma.metric.createMany({
+    data: metrics,
   });
 }
 
@@ -189,9 +229,8 @@ async function seedCheckouts() {
   });
 }
 
-deleteAllEntries();
-
 async function seed() {
+  await deleteAllEntries();
   await seedStartups();
   console.log(`Successfully seeded database with startups 🌱`);
   await seedFounders();
@@ -200,6 +239,8 @@ async function seed() {
   console.log(`Successfully seeded database with requests 🌱`);
   await seedCheckouts();
   console.log(`Successfully seeded database with checkouts 🌱`);
+
+  await seedMetrics();
 }
 
 seed();

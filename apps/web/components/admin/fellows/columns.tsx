@@ -124,8 +124,9 @@ export const columns: ColumnDef<Startup>[] = [
             >
               Copy Email
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => {}}>Edit</DropdownMenuItem>
-            <DropdownMenuItem onClick={async () => {}}>Delete</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={`/admin/fellows/${teammate.id}`}>View</Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

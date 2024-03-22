@@ -22,6 +22,7 @@ import {
 } from "@ui/components/table";
 import { Button } from "@ui/components/ui/button";
 import { Input } from "@ui/components/ui/input";
+import { useRouter } from "next/navigation";
 
 import { useState } from "react";
 
@@ -54,6 +55,8 @@ export function DataTable<TData, TValue>({
       rowSelection,
     },
   });
+
+  const router = useRouter();
 
   return (
     <div>
@@ -92,6 +95,9 @@ export function DataTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  onClick={() => {
+                    router.push(`/admin/fellows/${row.original["id"]}`);
+                  }}
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (

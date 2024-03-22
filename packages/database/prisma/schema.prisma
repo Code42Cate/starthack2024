@@ -74,16 +74,52 @@ model Startup {
   fellowStatus  FellowStatus
   fundingStatus FundingStatus
   companyStatus String
-  logoUrl       String
-  foundingDate  DateTime
-  country       String
-  website       String
-  twitter       String
-  linkedin      String
+  totalFunding  Int           @default(0)
 
+  logoUrl      String
+  foundingDate DateTime
+  country      String
+  website      String
+  twitter      String
+  linkedin     String
+
+  batch         String
+  pitchdeckUrl  String
   businessModel BusinessModel
 
-  founders Founder[]
+  founders     Founder[]
+  FundingRound FundingRound[]
+  Metrics      Metric[]
+}
+
+model Metric {
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  startupId Int
+  startup   Startup @relation(fields: [startupId], references: [id])
+
+  revenue            Int
+  monthlyActiveUsers Int
+  cash               Int
+  runwayMonths       Int
+  clientRetention    Int
+
+  northStarMetric String
+  northStarValue  Int
+}
+
+model FundingRound {
+  id Int @id @default(autoincrement())
+
+  startupId Int
+  startup   Startup @relation(fields: [startupId], references: [id])
+
+  roundName    String
+  amountRaised Int
+  date         DateTime
+  investors    String[]
 }
 
 enum Gender {

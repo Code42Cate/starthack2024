@@ -5,8 +5,8 @@
   "types": "./index.ts",
   "scripts": {
     "db:generate": "prisma generate",
-    "db:push": "prisma db push --skip-generate --accept-data-loss",
-    "db:seed": "tsx seed.ts"
+    "db:push": "prisma db push --skip-generate --accept-data-loss --force-reset",
+    "db:seed": "tsx seed1.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",

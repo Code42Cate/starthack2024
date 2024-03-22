@@ -19,7 +19,7 @@ export default async function FellowsPage() {
   const data = await getStartups();
 
   return (
-    <div className="">
+    <div>
       <h1 className="text-xl font-bold">Fellows + Alumni</h1>
       <DataTable columns={columns} data={data} />
     </div>

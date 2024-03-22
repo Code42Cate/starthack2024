@@ -4,6 +4,8 @@ export type {
   BusinessModel,
   Category,
   Checkout,
+  FundingRound,
+  Metric,
   FellowStatus,
   Founder,
   FundingStatus,
