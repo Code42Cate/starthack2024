@@ -90,6 +90,9 @@ importers:
       recharts:
         specifier: ^2.12.3
         version: 2.12.3(react-dom@18.2.0)(react@18.2.0)
+      sonner:
+        specifier: ^1.4.41
+        version: 1.4.41(react-dom@18.2.0)(react@18.2.0)
       ui:
         specifier: workspace:*
         version: link:../../packages/ui
@@ -202,12 +205,18 @@ importers:
       lucide-react:
         specifier: ^0.244.0
         version: 0.244.0(react@17.0.2)
+      next-themes:
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@17.0.2)
       react-day-picker:
         specifier: ^8.10.0
         version: 8.10.0(date-fns@3.6.0)(react@17.0.2)
       react-hook-form:
         specifier: ^7.51.1
         version: 7.51.1(react@17.0.2)
+      sonner:
+        specifier: ^1.4.41
+        version: 1.4.41(react-dom@18.2.0)(react@17.0.2)
       tailwind-merge:
         specifier: ^1.13.2
         version: 1.14.0
@@ -4506,6 +4515,16 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
+  /next-themes@0.3.0(react-dom@18.2.0)(react@17.0.2):
+    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
+      react-dom: 18.2.0(react@17.0.2)
+    dev: false
+
   /next@13.5.6(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Y2wTcTbO4WwEsVb4A8VSnOsG1I9ok+h74q0ZdxkwM3EODqrs4pasq7O0iUxbcS9VtWMicG7f3+HAj0r1+NtKSw==}
     engines: {node: '>=16.14.0'}
@@ -5544,6 +5563,26 @@ packages:
       ip-address: 9.0.5
       smart-buffer: 4.2.0
     dev: true
+
+  /sonner@1.4.41(react-dom@18.2.0)(react@17.0.2):
+    resolution: {integrity: sha512-uG511ggnnsw6gcn/X+YKkWPo5ep9il9wYi3QJxHsYe7yTZ4+cOd1wuodOUmOpFuXL+/RE3R04LczdNCDygTDgQ==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 17.0.2
+      react-dom: 18.2.0(react@17.0.2)
+    dev: false
+
+  /sonner@1.4.41(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-uG511ggnnsw6gcn/X+YKkWPo5ep9il9wYi3QJxHsYe7yTZ4+cOd1wuodOUmOpFuXL+/RE3R04LczdNCDygTDgQ==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}

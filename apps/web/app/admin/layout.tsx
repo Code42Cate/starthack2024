@@ -1,6 +1,7 @@
 import { MainNav } from "@/components/admin/layout/main-nav";
 import { Search } from "@/components/admin/layout/search";
 import UserNav from "@/components/admin/layout/user-nav";
+
 import Image from "next/image";
 
 export default function Layout({ children }) {
