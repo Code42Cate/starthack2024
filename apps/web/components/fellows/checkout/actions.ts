@@ -3,7 +3,7 @@ import { prisma } from "database";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 export async function transcribeAudioBlob(blob: Blob) {
