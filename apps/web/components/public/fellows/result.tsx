@@ -17,7 +17,7 @@ export default function Result({ fellow }: { fellow: Startup }) {
         className="h-24 w-24 rounded-lg object-cover"
       />
 
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between gap-2">
         <div className="flex flex-row items-baseline gap-2">
           <div className="text-lg font-bold">{fellow.name}</div>
           <div className="text-sm">{fellow.country}</div>

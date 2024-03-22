@@ -175,7 +175,7 @@ export default async function FellowDashboard({ params: { id } }) {
                 <dt className="text-sm font-medium leading-6 text-gray-900">
                   Description
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 max-w-sm text-wrap text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                   {data.fellow.description}
                 </dd>
               </div>

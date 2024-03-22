@@ -47,6 +47,10 @@ export default function CheckoutPager() {
               <Label className="w-80">
                 Record your voice instead and we summarize everything for you:
               </Label>
+              <Button type="submit" variant="secondary">
+                Record audio
+              </Button>
+
               <Button type="submit" disabled={isPending}>
                 {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Submit
