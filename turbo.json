@@ -26,5 +26,6 @@
     "start": {
       "dependsOn": ["^build", "^db:generate"]
     }
-  }
+  },
+  "globalEnv": ["OPENAI_API_KEY"]
 }
