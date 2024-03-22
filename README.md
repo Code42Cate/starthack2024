@@ -2,6 +2,8 @@
 
 The aim of this project is to unify data management, communication, registration, and analysis for the START Fellowship program. The project is built with Next.js, Prisma, and PostgreSQL, and OpenAI.
 
+![Dashboard](./screenshots/dashboard.png)
+
 ## Features
 
 - Manage START Fellowship applications in Kanban board
@@ -81,25 +83,7 @@ This is the diagram of the database. You can also find the schema in `/packages/
 
 ## Screenshots
 
-![Dashboard](./screenshots/dashboard.png)
-
-![Directory](./screenshots/directory.png")
-
-![Application 1](./screenshots/apply1.png")
-
-![Application 2](./screenshots/apply2.png")
-
-![Application 3](./screenshots/apply3.png")
-
-![Application 4](./screenshots/apply4.png")
-
-![Checkout](./screenshots/checkout.png")
-
-![Applications](./screenshots/applications.png")
-
-![Team Management](./screenshots/team.png")
-
-![Add Teammate](./screenshots/addteammate.png")
+You can find more screenshots in the screenshots folder.
 
 ## License
 
