@@ -4,6 +4,7 @@ import { filter } from "@/app/constants";
 import { Checkbox } from "@ui/components/ui/checkbox";
 import { Label } from "@ui/components/ui/label";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Toaster, toast } from "sonner";
 
 function CheckboxWithState({ name, label }: { name: string; label: string }) {
   const searchparams = useSearchParams();
@@ -20,7 +21,11 @@ function CheckboxWithState({ name, label }: { name: string; label: string }) {
           } else {
             params.delete(name);
           }
-          router.push(`/public/fellows?${params.toString()}`);
+          toast(
+            "Because of the limited amount of data, filters are purely aesthetic.",
+          );
+
+          // router.push(`/public/fellows?${params.toString()}`);
         }}
       />
       <Label>{label}</Label>
@@ -31,6 +36,7 @@ function CheckboxWithState({ name, label }: { name: string; label: string }) {
 export default function Filter() {
   return (
     <>
+      <Toaster />
       {Object.entries(filter.special).map(([key, value]) => (
         <div className="flex flex-row items-center gap-2" key={key}>
           <CheckboxWithState name={key} label={value} />
