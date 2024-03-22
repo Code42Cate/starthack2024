@@ -8,14 +8,28 @@ import { Loader2 } from "lucide-react";
 import { useEffect, useRef, useTransition } from "react";
 
 export default function CheckoutPager() {
-  const ref = useRef<HTMLInputElement>(null);
+  let [isPending, startTransition] = useTransition();
+
+  useEffect(() => {
+    if (isPending) return;
+
+    // THIS CODE WILL RUN AFTER THE SERVER ACTION
+  }, [isPending]);
+
+  const onSubmit = async (formData: FormData) => {
+    // RUN SOME VALIDATION HERE
+
+    startTransition(() => {
+      summarizeActionItems(formData);
+    });
+  };
 
   return (
     <div className="flex flex-col rounded-lg border-neutral-500 bg-white p-4 shadow-md">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-bold">Weekly Checkout</h1>
         <div className="flex max-w-xl flex-col gap-4">
-          <form className="space-y-2">
+          <form className="space-y-2" action={onSubmit}>
             <Input type="hidden" name="founderId" value="21" />
 
             <Label>
@@ -33,15 +47,12 @@ export default function CheckoutPager() {
               <Label className="w-80">
                 Record your voice instead and we summarize everything for you:
               </Label>
-              <input type="file" accept="audio/mp3" className="ml-auto" />
+              <input type="file" accept="audio/mp3" />
 
-              {/*
-}
               <Button type="submit" disabled={isPending}>
                 {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Submit
               </Button>
-*/}
             </div>
           </form>
         </div>
