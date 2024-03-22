@@ -15,15 +15,11 @@ export default function Page() {
             Application Process
           </Link>
 
-          <Link href="/public/fellows" className="underline underline-offset-2">
-            Public startup data
-          </Link>
-
           <Link
-            href="/admin/fellows/21"
+            href="/fellows/checkout"
             className="underline underline-offset-2"
           >
-            Admin Startup dashboard
+            Startup Checkout Page
           </Link>
 
           <Link
@@ -34,10 +30,14 @@ export default function Page() {
           </Link>
 
           <Link
-            href="/fellows/checkout"
+            href="/admin/fellows/21"
             className="underline underline-offset-2"
           >
-            Startup Checkout Page
+            Admin Startup dashboard
+          </Link>
+
+          <Link href="/public/fellows" className="underline underline-offset-2">
+            Public startup data
           </Link>
 
           <Link
